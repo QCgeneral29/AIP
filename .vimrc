@@ -5,7 +5,7 @@ set autoindent
 set smartindent
 set relativenumber
 " set noerrorbells " Disable beep on errors.
-filetype plugin on
+filetype plugin indent on
 syntax on
 
 " vim-plug cheatsheet
