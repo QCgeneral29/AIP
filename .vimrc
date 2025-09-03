@@ -5,8 +5,8 @@ set autoindent
 set smartindent
 set relativenumber
 " set noerrorbells " Disable beep on errors.
-:filetype plugin on
-:syntax on
+filetype plugin on
+syntax on
 
 " vim-plug cheatsheet
 " :PlugInstall to install the plugins
