@@ -13,6 +13,8 @@
 		"pulseaudio",
 		"network",
 		"battery",
+		// This is specific to my janky 2-in-1 tablet. 
+		"custom/kbdlock",
 		"tray"
 	],
 
@@ -35,6 +37,13 @@
                 "10": "十"
         }
     },
+	"custom/kbdlock": {
+	    "exec": "~/Bin/kbdlock.sh",
+		"on-click": "~/Bin/kbdlock.sh --toggle",
+    	"interval": 5,
+    	"return-type": "json",
+    	"tooltip": true
+	},	
 	"clock": {
 		"format": "{:%I:%M %p}",
         // "timezone": "America/New_York",
