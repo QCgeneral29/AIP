@@ -38,6 +38,7 @@ PKGS=(
 	font-manager
 	nerd-fonts
 	discord
+	obs-studio
 	steam
 	ttf-liberation # Font for steam
 	# Hyprland Desktop Environment and related packages
@@ -45,6 +46,11 @@ PKGS=(
 	hyprpaper
 	polkit
 	hyprpolkitagent
+	dunst
+	xdg-desktop-portal-hyprland
+	qt5-wayland
+	qt6-wayland
+	noto-fonts
 	wofi
 	waybar
 	dolphin
