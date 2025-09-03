@@ -113,11 +113,12 @@ fi
 # 		iio-hyprland from https://github.com/JeanSchoeller/iio-hyprland
 # 		It requires jq as a dependency. (iio-hyprland is on the AUR)
 
-
 # We don't auto install yay packages because they are technically very unsecure.
 
-
-
+echo "==> Setting up wallpaper at ~/Pictures/Wallpaper (Will not overwrite existing)"
+# Create wallpaper directory
+mkdir -p ~/Pictures/Wallpaper
+cp -n wallpaper.jpg ~/Pictures/Wallpaper/
 
 
 
