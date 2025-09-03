@@ -43,6 +43,7 @@ PKGS=(
 	ttf-liberation # Font for steam
 	# Hyprland Desktop Environment and related packages
 	hyprland
+	hyprlock
 	hyprpaper
 	polkit
 	hyprpolkitagent
