@@ -63,6 +63,7 @@ Running the setup script does the following
 - Install recommended packages
 - Enable system services
 - Install yay
+- Install vim-plug
 
 
 NOTE: The setup script does not install any yay packages. You need to do this yourself.
