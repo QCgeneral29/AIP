@@ -17,6 +17,7 @@ sudo pacman -Syu --noconfirm
 PKGS=(
 	# Bare essential packages
 	base-devel
+	jre-openjdk
 	unzip
 	zip
 	reflector
@@ -39,6 +40,9 @@ PKGS=(
 	nerd-fonts
 	discord
 	obs-studio
+	blender
+	godot
+	libreoffice-still
 	steam
 	ttf-liberation # Font for steam
 	# Hyprland Desktop Environment and related packages
@@ -48,7 +52,6 @@ PKGS=(
 	polkit
 	hyprpolkitagent
 	dunst
-	xdg-desktop-portal-hyprland
 	qt5-wayland
 	qt6-wayland
 	noto-fonts
@@ -64,6 +67,10 @@ PKGS=(
 	wireplumber
 	pavucontrol
 	playerctl
+	xdg-desktop-portal-hyprland # Something to do with screen sharing
+	xdg-desktop-portal-gtk # Fallback 
+	grim # Dependencies for above.
+	slurp # Who names these?
 	# iio-sensor-proxy is used for device rotation to update screen rotation
 	iio-sensor-proxy
 	# System backup and restore
@@ -102,6 +109,8 @@ sudo systemctl enable --now nftables.service
 sudo systemctl enable --now cups.service
 sudo systemctl enable --now reflector.service
 sudo systemctl enable --now cronie.service
+# I don't know if this is necessary
+systemctl --user enable --now pipewire pipewire-pulse wireplumber
 
 # Install yay (AUR helper) if not already installed
 if ! command -v yay &>/dev/null; then
@@ -133,3 +142,15 @@ echo "==> Installing vim-plug plugin manager"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# Increase vm.max_map_count for game compatibility
+GAME_COMPAT_FILE="/etc/sysctl.d/80-gamecompatibility.conf"
+
+if [ ! -f "$GAME_COMPAT_FILE" ]; then
+	echo "==> Creating vm.max_map_count game compatibility file..."
+    echo "vm.max_map_count = 2147483642" | sudo tee "$GAME_COMPAT_FILE" > /dev/null
+    sudo sysctl --system
+else
+    echo "==> vm.max_map_count increase already exists, not overwriting."
+fi
+
+echo "==> Setup complete."
