@@ -79,3 +79,16 @@ stow .
 stow -D .
 ```
 
+# Start hyprland
+If you want to use a login manger, install one
+``` bash
+sudo pacman -S sddm
+
+sudo systemctl enable sddm
+```
+
+Otherwise, just launch hyprland from the terminal
+```bash
+hyprland
+```
+
