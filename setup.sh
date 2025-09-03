@@ -120,11 +120,9 @@ echo "==> Setting up wallpaper at ~/Pictures/Wallpaper (Will not overwrite exist
 mkdir -p ~/Pictures/Wallpaper
 cp -n wallpaper.jpg ~/Pictures/Wallpaper/
 
-
-
-
-
-
-
-
+# Install vim plugin manager
+# This isn't super secure...
+echo "==> Installing vim-plug plugin manager"
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
