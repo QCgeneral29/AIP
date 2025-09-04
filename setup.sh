@@ -58,6 +58,7 @@ PKGS=(
 	qt5-wayland
 	qt6-wayland
 	noto-fonts
+	noto-fonts-emoji
 	wofi
 	waybar
 	dolphin
