@@ -111,12 +111,13 @@ done
 sudo systemctl enable --now NetworkManager
 sudo systemctl enable --now bluetooth.service
 sudo systemctl enable --now nftables.service
-sudo systemctl enable --now cups.service
-sudo systemctl enable --now avahi-daemon.service
-sudo systemctl enable --now reflector.service
 sudo systemctl enable --now cronie.service
-# I don't know if this is necessary
-systemctl --user enable --now pipewire pipewire-pulse wireplumber
+sudo systemctl enable --now reflector.service
+# Printers (untest)
+sudo systemctl enable --now avahi-daemon.service
+# Enbable local hostname resolution for avahi
+sudo sed -i '/^hosts: mymachines resolve \[!UNAVAIL=return] files myhostname dns$/c\hosts: mymachines mdns_minimal [NOTFOUND=return] resolve [!UNAVAIL=return] files myhostname dns' /etc/nsswitch.conf
+sudo systemctl enable --now cups.service
 
 # Install yay (AUR helper) if not already installed
 if ! command -v yay &>/dev/null; then
