@@ -39,6 +39,8 @@ PKGS=(
 	font-manager
 	nerd-fonts
 	discord
+	qbittorrent
+	7zip
 	obs-studio
 	blender
 	godot
