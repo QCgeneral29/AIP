@@ -42,6 +42,7 @@ PKGS=(
 	qbittorrent
 	7zip
 	obs-studio
+	spotify-launcher
 	blender
 	godot
 	libreoffice-still
@@ -93,6 +94,8 @@ PKGS=(
 	# http://localhost:631/
 	cups
 	cups-pdf # Print to PDF
+	avahi # Printer discovery
+	nss-mdns # For above
 	# You might not need proton VPN, but I recommend their services.
 	proton-vpn-gtk-app
 )
@@ -109,6 +112,7 @@ sudo systemctl enable --now NetworkManager
 sudo systemctl enable --now bluetooth.service
 sudo systemctl enable --now nftables.service
 sudo systemctl enable --now cups.service
+sudo systemctl enable --now avahi-daemon.service
 sudo systemctl enable --now reflector.service
 sudo systemctl enable --now cronie.service
 # I don't know if this is necessary
