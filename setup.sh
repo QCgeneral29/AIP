@@ -1,19 +1,23 @@
 #!/bin/bash
 # setup.sh - Post-install Arch Linux setup script
 # I recommend reading all the comments so you understand the installation process.
-# There are also some packages that are not installed but are recommended in comments.
+# There are also some packages that are not installed, but are recommended in the comments.
 
 # Exit on errors
 set -e
 
+start=$(date +%s)
+
 # Uncomment multilib in pacman.conf. Used for installing 32bit apps e.g. Steam 
 sudo sed -i '/^\s*#\[multilib\]$/,/^$/ s/^#//' /etc/pacman.conf
 
-# Update system 
-echo "==> Updating system..."
+echo "==> Updating system"
 sudo pacman -Syu --noconfirm
 
 # List of packages from official repos
+# 	Feel free to add and remove packages as you please.
+# 	BUT, be aware some packages require others to work properly.
+# 	e.g. pipewire needing pipewire-pulse for compatibility
 PKGS=(
 	# Bare essential packages
 	base-devel
@@ -75,8 +79,7 @@ PKGS=(
 	xdg-desktop-portal-gtk # Fallback 
 	grim # Dependencies for above.
 	slurp # Who names these?
-	# iio-sensor-proxy is used for device rotation to update screen rotation
-	iio-sensor-proxy
+	iio-sensor-proxy # for device rotation to update screen rotation
 	# System backup and restore
 	cronie
 	timeshift
@@ -85,7 +88,7 @@ PKGS=(
 	bluez-utils
 	blueberry # GUI for bluetooth
 	# Japanese fonts and input manager
-	# You need to enable mozc in fcitx for Japanese IM
+	# Right click the keyboard icon in the tray -> configure -> enable mozc
 	adobe-source-han-sans-jp-fonts
 	adobe-source-han-serif-jp-fonts
 	noto-fonts-cjk
@@ -94,7 +97,7 @@ PKGS=(
 	# You can bookmark this ip for the cups web interface
 	# http://localhost:631/
 	cups
-	cups-pdf # Print to PDF
+	cups-pdf # Print to PDF. You can also just use web browser print to pdf.
 	avahi # Printer discovery
 	nss-mdns # For above
 	# You might not need proton VPN, but I recommend their services.
@@ -103,13 +106,13 @@ PKGS=(
 
 echo "==> Installing packages..."
 for PKG in "${PKGS[@]}"; do
-	if ! pacman -Qi $PKG &>/dev/null; then
-		sudo pacman -S --noconfirm --needed $PKG
+	if ! pacman -Qs "$PKG" &> /dev/null; then
+		sudo pacman -S --noconfirm --needed "$PKG"
 	fi
 done
+echo "==> Finished installing packages"
 
-echo "==> Enabling services"
-# Enable services
+echo "==> Enabling services..."
 sudo systemctl enable --now NetworkManager
 sudo systemctl enable --now bluetooth.service
 sudo systemctl enable --now nftables.service
@@ -120,7 +123,7 @@ sudo systemctl enable --now avahi-daemon.service
 # Enbable local hostname resolution for avahi
 sudo sed -i '/^hosts: mymachines resolve \[!UNAVAIL=return] files myhostname dns$/c\hosts: mymachines mdns_minimal [NOTFOUND=return] resolve [!UNAVAIL=return] files myhostname dns' /etc/nsswitch.conf
 sudo systemctl enable --now cups.service
-# Allow udp port for avahi if not already allowed.
+# Allow udp port for avahi in nftables (if not already allowed)
 sudo nft list chain inet filter input | grep -q 'udp dport 5353 accept' || \
 sudo nft add rule inet filter input udp dport 5353 accept comment "allow_mdns"
 
@@ -137,33 +140,37 @@ fi
 
 # After yay is installed, I recommend installing the following:
 # - informant - Infoms you of important news before a system upgrade
-# - iio-hyprland - If you need auto orientation e.g. 2 in 1 tablet.
-# 		For iio-sensor, if you want auto-rotate, you need to download
-# 		iio-hyprland from https://github.com/JeanSchoeller/iio-hyprland
+# - iio-hyprland - If you need auto orientation e.g. 2-in-1 tablet.
+# 		See https://github.com/JeanSchoeller/iio-hyprland for more info.
 # 		It requires jq as a dependency. (iio-hyprland is on the AUR)
 
-# We don't auto install yay packages because they are technically very unsecure.
+# We don't auto install yay packages because they are technically unsecure.
 
 echo "==> Setting up wallpaper at ~/Pictures/Wallpaper (Will not overwrite existing)"
-# Create wallpaper directory
+# Create wallpaper directory and copy wallpaper to it.
 mkdir -p ~/Pictures/Wallpaper
 cp -n wallpaper.jpg ~/Pictures/Wallpaper/
 
 # Install vim plugin manager
 # This isn't super secure...
-echo "==> Installing vim-plug plugin manager"
+echo "==> Installing vim-plug plugin manager..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Increase vm.max_map_count for game compatibility
 GAME_COMPAT_FILE="/etc/sysctl.d/80-gamecompatibility.conf"
-
 if [ ! -f "$GAME_COMPAT_FILE" ]; then
-	echo "==> Creating vm.max_map_count game compatibility file..."
+	echo "==> Creating vm.max_map_count game compatibility file"
     echo "vm.max_map_count = 2147483642" | sudo tee "$GAME_COMPAT_FILE" > /dev/null
     sudo sysctl --system
 else
-    echo "==> vm.max_map_count increase already exists, not overwriting."
+    echo "==> vm.max_map_count increase already exists"
 fi
 
-echo "==> Setup complete."
+echo "==> Setup complete!"
+
+end=$(date +%s)
+elapsed=$((end - start))
+minutes=$((elapsed / 60))
+seconds=$((elapsed % 60))
+echo "==> Finished in ${minutes}m ${seconds}s"
