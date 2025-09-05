@@ -108,17 +108,22 @@ for PKG in "${PKGS[@]}"; do
 	fi
 done
 
+echo "==> Enabling services"
 # Enable services
 sudo systemctl enable --now NetworkManager
 sudo systemctl enable --now bluetooth.service
 sudo systemctl enable --now nftables.service
 sudo systemctl enable --now cronie.service
 sudo systemctl enable --now reflector.service
-# Printers (untest)
+# Printers (tested)
 sudo systemctl enable --now avahi-daemon.service
 # Enbable local hostname resolution for avahi
 sudo sed -i '/^hosts: mymachines resolve \[!UNAVAIL=return] files myhostname dns$/c\hosts: mymachines mdns_minimal [NOTFOUND=return] resolve [!UNAVAIL=return] files myhostname dns' /etc/nsswitch.conf
 sudo systemctl enable --now cups.service
+# Allow udp port for avahi if not already allowed.
+sudo nft list chain inet filter input | grep -q 'udp dport 5353 accept' || \
+sudo nft add rule inet filter input udp dport 5353 accept comment "allow_mdns"
+
 
 # Install yay (AUR helper) if not already installed
 if ! command -v yay &>/dev/null; then
