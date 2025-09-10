@@ -105,11 +105,7 @@ PKGS=(
 )
 
 echo "==> Installing packages..."
-for PKG in "${PKGS[@]}"; do
-	if ! pacman -Qs "$PKG" &> /dev/null; then
-		sudo pacman -S --noconfirm --needed "$PKG"
-	fi
-done
+sudo pacman -S --noconfirm --needed "${PKGS[@]}"
 echo "==> Finished installing packages"
 
 echo "==> Enabling services..."
