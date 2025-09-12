@@ -42,6 +42,7 @@ PKGS=(
 	obsidian
 	font-manager
 	nerd-fonts
+	ttf-dejavu
 	discord
 	qbittorrent
 	7zip
