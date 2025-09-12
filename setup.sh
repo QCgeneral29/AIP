@@ -143,6 +143,11 @@ fi
 
 # We don't auto install yay packages because they are technically unsecure.
 
+# Sets the default URL opener for things such as terminal.
+# You can change it if you have another preference (e.g. chrome)
+echo "==> Setting default xdg web browser to firefox"
+xdg-settings set default-web-browser firefox.desktop
+
 echo "==> Setting up wallpaper at ~/Pictures/Wallpaper (Will not overwrite existing)"
 # Create wallpaper directory and copy wallpaper to it.
 mkdir -p ~/Pictures/Wallpaper
