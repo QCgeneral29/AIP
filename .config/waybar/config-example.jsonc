@@ -1,4 +1,6 @@
 // -*- mode: jsonc -*-
+// This is the default config file with hyprland support added.
+// You can use this as a reference to add or remove what you like.
 {
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)

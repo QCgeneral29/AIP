@@ -62,6 +62,7 @@ Running the setup script does the following
 - Run system update
 - Install recommended packages
 - Enable system services
+- Setup printer discovery 
 - Install yay
 - Install vim-plug
 

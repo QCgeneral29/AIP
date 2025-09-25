@@ -115,12 +115,13 @@ sudo systemctl enable --now bluetooth.service
 sudo systemctl enable --now nftables.service
 sudo systemctl enable --now cronie.service
 sudo systemctl enable --now reflector.service
-# Printers (tested)
+
+# Enable printer service, configure avahi, and allow discovery through firewall
 sudo systemctl enable --now avahi-daemon.service
 # Enbable local hostname resolution for avahi
 sudo sed -i '/^hosts: mymachines resolve \[!UNAVAIL=return] files myhostname dns$/c\hosts: mymachines mdns_minimal [NOTFOUND=return] resolve [!UNAVAIL=return] files myhostname dns' /etc/nsswitch.conf
 sudo systemctl enable --now cups.service
-# Allow udp port for avahi in nftables (if not already allowed)
+# Allow udp port for avahi in nftables
 sudo nft list chain inet filter input | grep -q 'udp dport 5353 accept' || \
 sudo nft add rule inet filter input udp dport 5353 accept comment "allow_mdns"
 
