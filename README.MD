@@ -71,6 +71,9 @@ See comments in the setup script for more details and recommendations.
 
 # Symlink dotfiles
 After running the setup script, run the following command to symlink all configuration files (dotfiles)
+
+As of writing, the default hyprland.conf rotates the monitor by 270 degrees because I am using a 2-1 tablet.
+Remove the text "transform, 3" in the monitors section to prevent this.
 ```bash
 # Create symlinks for all dot files
 stow .
