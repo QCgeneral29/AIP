@@ -57,6 +57,8 @@ PKGS=(
 	hyprland
 	hyprlock
 	hyprpaper
+	hyprpicker
+	wl-clipboard # For hyprpicker
 	polkit
 	hyprpolkitagent
 	dunst
