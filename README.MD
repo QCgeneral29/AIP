@@ -1,5 +1,7 @@
 # Arch Install Plus 
-Before running the setup script, you must install Arch Linux.
+
+> [!IMPORTANT]
+> Before running the setup script, you must install Arch Linux.
 
 Archinstall
 
