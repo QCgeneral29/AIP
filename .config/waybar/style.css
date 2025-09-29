@@ -5,8 +5,8 @@
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.5);
-    color: #ffffff;
+    background-color: rgba(255, 255, 255, 1.0);
+    color: #2a5c45;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -46,7 +46,7 @@ button:hover {
 #workspaces button {
     padding: 0 5px;
     background-color: transparent;
-    color: #ffffff;
+    color: #000000;
 }
 
 #workspaces button:hover {
@@ -77,11 +77,12 @@ button:hover {
 }
 
 #clock {
+    color: #2a5c45;
 }
 
 #battery {
     background-color: #ffffff;
-    color: #000000;
+    color: #2a5c45;
 }
 
 #battery.charging, #battery.plugged {
@@ -112,7 +113,8 @@ label:focus {
 }
 
 #network {
-    background-color: #2980b9;
+    background-color: #ffffff;
+    color: #2a5c45;
 }
 
 #network.disconnected {
@@ -125,12 +127,13 @@ label:focus {
 }
 
 #pulseaudio.muted {
-    background-color: #90b1b1;
+    background-color: #ffffff;
     color: #2a5c45;
 }
 
 #tray {
-    background-color: #2980b9;
+    background-color: #ffffff;
+    color: #2a5c45;
 }
 
 #tray > .passive {

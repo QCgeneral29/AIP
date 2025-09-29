@@ -2,7 +2,7 @@
 
 {
 	"height": 30, // Comment out for auto height
-	"spacing": 4,
+	"spacing": 0,
 	"modules-left": [
 		"hyprland/workspaces"
 	],
@@ -12,8 +12,8 @@
 	"modules-right": [
 		"pulseaudio",
 		"network",
-		"battery",
-		"tray"
+		"tray",
+		"battery"
 	],
 
 	// Modules configuration
@@ -85,4 +85,7 @@
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
+	"tray": {
+		"spacing": 10 
+	},
 }
