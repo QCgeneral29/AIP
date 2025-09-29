@@ -67,14 +67,17 @@ Running the setup script does the following
 - Install vim-plug
 
 
-NOTE: The setup script does not install any yay packages. You need to do this yourself.
-See comments in the setup script for more details and recommendations.
+> [!NOTE]
+> The setup script does not install any yay packages. You need to do this yourself.
+> See comments in the setup script for more details and recommendations.
 
 # Symlink dotfiles
 After running the setup script, run the following command to symlink all configuration files (dotfiles)
 
-As of writing, the default hyprland.conf rotates the monitor by 270 degrees because I am using a 2-1 tablet.
-Remove the text "transform, 3" in the monitors section to prevent this.
+> [!WARNING]
+> As of writing, the default hyprland.conf rotates the monitor by 270 degrees because I am using a 2-1 tablet.
+> Remove the text "transform, 3" in the monitors section to prevent this.
+
 ```bash
 # Create symlinks for all dot files
 stow .
