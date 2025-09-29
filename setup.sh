@@ -36,6 +36,7 @@ PKGS=(
 	networkmanager
 	network-manager-applet
 	nftables	
+	feh
 	fastfetch
 	firefox
 	mpv
