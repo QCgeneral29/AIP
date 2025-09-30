@@ -43,6 +43,10 @@ archinstall
 After running archinstall, reboot into the real system. 
 
 Install git and clone this repo to your system
+
+> [!IMPORTANT]
+> If you intend to symlink the dotfiles using GNU Stow, you must clone this repo to your home directory.
+
 ```bash
 # Connect to the internet with NetworkManager
 nmcli device wifi connect SSID_or_BSSID --ask
