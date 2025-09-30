@@ -140,7 +140,7 @@ else
 fi
 
 # After yay is installed, I recommend installing the following:
-# - informant - Infoms you of important news before a system upgrade
+# - informant - Informs you of important news before a system upgrade
 # - iio-hyprland - If you need auto orientation e.g. 2-in-1 tablet.
 # 		See https://github.com/JeanSchoeller/iio-hyprland for more info.
 # 		It requires jq as a dependency. (iio-hyprland is on the AUR)
@@ -149,7 +149,7 @@ fi
 
 # Sets the default URL opener for things such as terminal.
 # You can change it if you have another preference (e.g. chrome)
-echo "==> Setting default xdg web browser to firefox"
+echo "==> Setting default-xdg-web-browser to firefox"
 xdg-settings set default-web-browser firefox.desktop
 
 echo "==> Setting up wallpaper at ~/Pictures/Wallpaper (Will not overwrite existing)"
