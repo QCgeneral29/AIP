@@ -53,7 +53,7 @@ nmcli device wifi connect SSID_or_BSSID --ask
 
 sudo pacman -S git # If not installed already
 
-git clone https://github.com/QCgeneral30/AIP.git
+git clone https://github.com/QCgeneral29/AIP.git
 ```
 
 Run the setup script
