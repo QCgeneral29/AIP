@@ -54,6 +54,7 @@ PKGS=(
 	feh
 	fastfetch
 	firefox
+	yt-dlp
 	### Somewhat optional packages
 	mpv
 	obsidian
