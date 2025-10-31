@@ -20,6 +20,30 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto -I' # Ignore binary files
 PS1='[\u@\h \W]\$ '
 
+### Compress a video with an optional crf value.
+compressVideo() {
+    if [ $# -lt 1 ]; then
+        echo "Usage: compressVideo <input> [crf]"
+        echo "Example: compressVideo MyVideo.mp4 28"
+        echo "CRF: lower = higher quality & larger file (e.g., 18)"
+        echo "     higher = lower quality & smaller file (e.g., 35)"
+		echo "     default = 30"
+        return 1
+    fi
+
+    input="$1"
+    output="${input%.*}-compressed.mp4"
+    crf="${2:-30}"
+
+    ffmpeg -i "$input" \
+        -c:v libx264 \
+        -tag:v avc1 \
+        -movflags faststart \
+        -crf "$crf" \
+        -preset superfast \
+        "$output"
+}
+    
 ### Compress a video to 10mb and convert to mp4
 # Note: Made with AI and is probably bad. Seems to work well-enough
 compressVideo10MB() {
