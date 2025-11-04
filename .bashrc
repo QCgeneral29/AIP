@@ -1,11 +1,7 @@
 #
 # ~/.bashrc
+# Provided by Arch Install Plus
 #
-
-# Helpful commands
-alias wifi-on='rfkill unblock wifi'
-alias wifi-off='rfkill block wifi'
-alias getsong='yt-dlp -f bestaudio --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s"'
 
 # For Japanese Input Manager
 GTK_IM_MODULE=fcitx
@@ -18,10 +14,64 @@ GLFW_IM_MODULE=ibus
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto -I' # Ignore binary files
+alias feh='feh --scale-down' # Scale image to fit window
 PS1='[\u@\h \W]\$ '
 
-### Compress a video with an optional crf value.
-compressVideo() {
+########################
+### Helpful commands ###
+########################
+alias wifion='rfkill unblock wifi'
+alias wifioff='rfkill block wifi'
+alias getsong='yt-dlp -f bestaudio --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s"'
+
+# Strip metadata from a jpg and compress for web use.
+convertJpgForWeb() {
+    if [ -z "$1" ]; then
+        echo "Usage: convertJpgForWeb <input.jpg>"
+        echo "Converts a JPG to a web-optimized version (progressive, stripped metadata, quality 85)."
+        return 1
+    fi
+
+    local input="$1"
+    local output="${input%.jpg}-web.jpg"
+
+    magick "$input" -strip -interlace Plane -sampling-factor 4:2:0 -quality 75 "$output"
+
+    echo "Created: $output"
+}
+
+convertWebpToJpg() {
+    if [ -z "$1" ]; then
+        echo "Usage: convertWebpToJpg <input.webp>"
+        echo "Converts a WEBP to JPG with maximum quality (no visible loss)."
+        return 1
+    fi
+
+    local input="$1"
+    local output="${input%.webp}.jpg"
+
+    magick "$input" -quality 100 "$output"
+
+    echo "Created: $output"
+}
+
+convertJpgForWebp() {
+    if [ -z "$1" ]; then
+        echo "Usage: convertJpgForWebp <input.jpg>"
+        echo "Converts a JPG to a web-optimized WEBP image (quality 85, efficient compression)."
+        return 1
+    fi
+
+    local input="$1"
+    local output="${input%.jpg}.webp"
+
+    magick "$input" -strip -quality 85 -define webp:method=6 "$output"
+
+    echo "Created: $output"
+}
+
+# Compress a video with an optional crf value.
+convertVideo() {
     if [ $# -lt 1 ]; then
         echo "Usage: compressVideo <input> [crf]"
         echo "Example: compressVideo MyVideo.mp4 28"
@@ -46,7 +96,7 @@ compressVideo() {
     
 ### Compress a video to 10mb and convert to mp4
 # Note: Made with AI and is probably bad. Seems to work well-enough
-compressVideo10MB() {
+convertVideo10MB() {
     if [ $# -eq 0 ]; then
         echo "Usage: compressVideo10MB <input_file>"
         return 1

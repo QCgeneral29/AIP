@@ -52,8 +52,10 @@ PKGS=(
 	network-manager-applet
 	nftables	
 	feh
-	fastfetch
+	ffmpeg
+	imagemagick
 	firefox
+	fastfetch
 	yt-dlp
 	### Somewhat optional packages
 	mpv
