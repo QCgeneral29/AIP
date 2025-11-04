@@ -64,14 +64,13 @@ chmod +x setup.sh
 ```
 
 Running the setup script does the following
+- Update the package mirrorlist
 - Enable multilib packages
 - Run system update
 - Install recommended packages
 - Enable system services
 - Setup printer discovery 
-- Install yay
-- Install vim-plug
-
+- Install yay and vim-plug
 
 > [!NOTE]
 > The setup script does not install any yay packages. You need to do this yourself.
