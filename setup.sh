@@ -18,16 +18,17 @@ set -o pipefail
 
 start=$(date +%s)
 
+# Install and run reflector before updating
+echo -e "${INDENT} Installing reflector"
+sudo pacman -S --noconfirm --needed reflector
+echo -e "${INDENT} Searching for best mirrors. This will take a few minutes..."
+sudo reflector --protocol https --download-timeout 15 --latest 10 --sort rate --fastest 5 --save /etc/pacman.d/mirrorlist >/dev/null 2>&1
+
 # Uncomment multilib in pacman.conf. Used for installing 32bit apps e.g. Steam 
 sudo sed -i '/^\s*#\[multilib\]$/,/^$/ s/^#//' /etc/pacman.conf
 
 echo -e "${INDENT} Updating system"
 sudo pacman -Syu --noconfirm
-
-echo -e "${INDENT} Installing reflector"
-sudo pacman -S --noconfirm --needed reflector
-echo -e "${INDENT} Searching for best mirrors. This will take a few minutes..."
-sudo reflector --protocol https --download-timeout 15 --latest 10 --sort rate --fastest 5 --save /etc/pacman.d/mirrorlist >/dev/null 2>&1
 
 # List of packages from official repos
 # 	Feel free to add and remove packages as you please.
