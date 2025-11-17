@@ -57,7 +57,6 @@ PKGS=(
 	imagemagick
 	firefox
 	fastfetch
-	yt-dlp
 	### Somewhat optional packages
 	mpv
 	obsidian
@@ -165,6 +164,7 @@ fi
 # - iio-hyprland - If you need auto orientation e.g. 2-in-1 tablet.
 # 		See https://github.com/JeanSchoeller/iio-hyprland for more info.
 # 		It requires jq as a dependency. (iio-hyprland is on the AUR)
+# - yt-dlp-ejs - For downloading videos, you need deno and a solver script.
 
 # We don't auto install yay packages because they are technically unsecure.
 
