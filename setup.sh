@@ -21,7 +21,8 @@ start=$(date +%s)
 # Install and run reflector before updating
 echo -e "${INDENT} Installing reflector"
 sudo pacman -S --noconfirm --needed reflector
-echo -e "${INDENT} Searching for best mirrors. This will take a few minutes..."
+echo -e "${INDENT} Searching for best mirrors. Press Ctrl+C to skip this process. "
+echo -e "${INDENT} This will take a few minutes..."
 sudo reflector --protocol https --download-timeout 15 --latest 10 --sort rate --fastest 5 --save /etc/pacman.d/mirrorlist >/dev/null 2>&1
 
 # Uncomment multilib in pacman.conf. Used for installing 32bit apps e.g. Steam 
