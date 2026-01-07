@@ -101,6 +101,6 @@ sudo systemctl enable sddm
 
 Otherwise, just launch hyprland from the terminal
 ```bash
-hyprland
+start-hyprland
 ```
 
