@@ -109,7 +109,7 @@ PKGS=(
 	# System backup and restore
 	cronie
 	timeshift
-	# Bluetooth backages
+	# Bluetooth packages
 	bluez
 	bluez-utils
 	blueman # Bluetooth manager GUI 
