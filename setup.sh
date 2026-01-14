@@ -112,7 +112,7 @@ PKGS=(
 	# Bluetooth backages
 	bluez
 	bluez-utils
-	blueberry # GUI for bluetooth
+	blueman # Bluetooth manager GUI 
 	# Japanese fonts and input manager
 	# Right click the keyboard icon in the tray -> configure -> enable mozc
 	adobe-source-han-sans-jp-fonts
