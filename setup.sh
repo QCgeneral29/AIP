@@ -36,6 +36,26 @@ sudo pacman -Syu --noconfirm
 # 	BUT, be aware some packages require others to work properly.
 # 	e.g. pipewire needing pipewire-pulse for compatibility
 PKGS=(
+	### Optional packages. Uncomment what you need.
+	# code # Open source alternative to Visual Studio Code
+	# blender # Free and open source 3D modeling software (and more!).
+	# godot # Free and open source 2D and 3D game engine.
+	# proton-vpn-gtk-app # Proton VPN. Refferal code: https://pr.tn/ref/VXSDWNRS
+	fastfetch # Alternative to neofetch.
+	feh # Image viewer
+	mdcat # cat but for reading markdown files.
+	mpv # Video player
+	obsidian # Note taking application
+	font-manager
+	ttf-dejavu
+	discord
+	qbittorrent
+	7zip
+	obs-studio
+	spotify-launcher
+	libreoffice-still # Free and open source productivity suite. E.g. Microsoft Word, Excel, etc.
+	steam
+	ttf-liberation # Font for steam
 	### Bare essential packages
 	base-devel
 	jre-openjdk
@@ -56,26 +76,6 @@ PKGS=(
 	imagemagick
 	firefox
 	ttf-bigblueterminal-nerd # Used in kitty config
-	### Optional packages. Uncomment what you need.
-	# code # Open source alternative to Visual Studio Code
-	fastfetch
-	feh
-	mdcat
-	mpv
-	obsidian
-	font-manager
-	ttf-dejavu
-	discord
-	qbittorrent
-	7zip
-	obs-studio
-	spotify-launcher
-	# blender
-	# godot
-	libreoffice-still
-	steam
-	ttf-liberation # Font for steam
-	# proton-vpn-gtk-app # Proton VPN. Refferal code: https://pr.tn/ref/VXSDWNRS
 	### Hyprland Desktop Environment and related packages
 	hyprland
 	hyprlock
@@ -148,8 +148,6 @@ sudo systemctl enable --now cups.service
 # Allow udp port for avahi in nftables
 sudo nft list chain inet filter input | grep -q 'udp dport 5353 accept' || \
 sudo nft add rule inet filter input udp dport 5353 accept comment "allow_mdns"
-echo -e "${INDENT} ${RED}Configure printers at${NC} ${BLUE}http://localhost:631/admin${NC}"
-echo "Login to the admin page using your root username and password. (Bookmark recommended)"
 
 # Install yay (AUR helper) if not already installed
 if ! command -v yay &>/dev/null; then
@@ -197,10 +195,21 @@ else
     echo -e "${INDENT} vm.max_map_count increase already exists"
 fi
 
-echo -e "${INDENT} ${GREEN}Setup complete!${NC}"
+### Inform users of steps that require manual intervention.
+echo -e "${INDENT} ${RED}To Configure Japanese Input:${NC}"
+echo "Right click the keyboard icon in the tray -> configure -> enable mozc"
 
+echo -e "${INDENT} ${RED}Configure printers at${NC} ${BLUE}http://localhost:631/admin${NC}"
+echo "Login to the admin page using your root username and password. (Bookmark recommended)"
+
+echo -e "${INDENT} ${RED}The default hyprland configuration is located in .config/hypr/hyprland.conf${NC}"
+echo "The default configuration rotates the screen by 180 degrees. Remove 'transform, 3' to disable this."
+
+### Calculate script runtime and finish.
 end=$(date +%s)
 elapsed=$((end - start))
 minutes=$((elapsed / 60))
 seconds=$((elapsed % 60))
+
+echo -e "${INDENT} ${GREEN}Setup complete!${NC}"
 echo -e "${INDENT} ${BLUE}Finished in ${minutes}m ${seconds}s${NC}"
