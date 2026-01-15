@@ -43,7 +43,6 @@ PKGS=(
 	zip
 	reflector
 	git
-	mdcat
 	vim
 	man-db
 	less
@@ -53,67 +52,68 @@ PKGS=(
 	networkmanager
 	network-manager-applet
 	nftables	
-	feh
 	ffmpeg
 	imagemagick
 	firefox
+	ttf-bigblueterminal-nerd # Used in kitty config
+	### Optional packages. Uncomment what you need.
+	# code # Open source alternative to Visual Studio Code
 	fastfetch
-	### Somewhat optional packages
+	feh
+	mdcat
 	mpv
 	obsidian
 	font-manager
-	nerd-fonts
 	ttf-dejavu
 	discord
 	qbittorrent
 	7zip
 	obs-studio
 	spotify-launcher
-	blender
-	godot
+	# blender
+	# godot
 	libreoffice-still
 	steam
 	ttf-liberation # Font for steam
-	# You might not need proton VPN, but I recommend their services.
-	proton-vpn-gtk-app
+	# proton-vpn-gtk-app # Proton VPN. Refferal code: https://pr.tn/ref/VXSDWNRS
 	### Hyprland Desktop Environment and related packages
 	hyprland
 	hyprlock
 	hyprpaper
-	hyprpicker
+	hyprpicker # Color picker
 	wl-clipboard # For hyprpicker
 	polkit
 	hyprpolkitagent
-	dunst
+	dunst # Notifications
 	qt5-wayland
 	qt6-wayland
 	noto-fonts
 	noto-fonts-emoji
-	wofi
+	wofi # App launcher
 	waybar
-	dolphin
+	dolphin # File explorer
 	otf-font-awesome
-	brightnessctl
-	kitty
-	pipewire
+	brightnessctl # Control screen brightness
+	kitty # Terminal Emulator
+	pipewire # Audio backend
 	pipewire-pulse
 	pipewire-alsa
 	wireplumber
-	pavucontrol
+	pavucontrol # Audio GUI
 	playerctl
 	xdg-desktop-portal-hyprland # Something to do with screen sharing
 	xdg-desktop-portal-gtk # Fallback 
 	grim # Dependencies for above.
-	slurp # Who names these?
-	iio-sensor-proxy # for device rotation to update screen rotation
-	# System backup and restore
+	slurp # Same as above. Who names these?
+	# iio-sensor-proxy # for device rotation to update screen rotation
+	### The next two are for system backup and restore
 	cronie
 	timeshift
 	# Bluetooth packages
 	bluez
 	bluez-utils
 	blueman # Bluetooth manager GUI 
-	# Japanese fonts and input manager
+	### Japanese fonts and input manager
 	# Right click the keyboard icon in the tray -> configure -> enable mozc
 	adobe-source-han-sans-jp-fonts
 	adobe-source-han-serif-jp-fonts
@@ -121,7 +121,7 @@ PKGS=(
 	fcitx5-im
 	fcitx5-mozc
 	# You can bookmark this ip for the cups web interface
-	# http://localhost:631/
+	# http://localhost:631/admin
 	cups
 	cups-pdf # Print to PDF. You can also just use web browser print to pdf.
 	avahi # Printer discovery
@@ -148,7 +148,8 @@ sudo systemctl enable --now cups.service
 # Allow udp port for avahi in nftables
 sudo nft list chain inet filter input | grep -q 'udp dport 5353 accept' || \
 sudo nft add rule inet filter input udp dport 5353 accept comment "allow_mdns"
-
+echo -e "${INDENT} ${RED}Configure printers at${NC} ${BLUE}http://localhost:631/admin${NC}"
+echo "Login to the admin page using your root username and password. (Bookmark recommended)"
 
 # Install yay (AUR helper) if not already installed
 if ! command -v yay &>/dev/null; then
@@ -161,11 +162,12 @@ else
 fi
 
 ### After yay is installed, I recommend installing the following:
-# - informant - Infoms you of important news before a system upgrade
+# - informant - Informs you of important news before a system upgrade
+# - yt-dlp-ejs - For downloading videos, you need deno and a solver script.
 # - iio-hyprland - If you need auto orientation e.g. 2-in-1 tablet.
 # 		See https://github.com/JeanSchoeller/iio-hyprland for more info.
 # 		It requires jq as a dependency. (iio-hyprland is on the AUR)
-# - yt-dlp-ejs - For downloading videos, you need deno and a solver script.
+# - visual-studio-code-bin - Binary blob for Visual Studio Code.
 
 # We don't auto install yay packages because they are technically unsecure.
 
