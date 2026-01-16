@@ -84,7 +84,7 @@ PKGS=(
 	wl-clipboard # For hyprpicker
 	polkit
 	hyprpolkitagent
-	dunst # Notifications
+	swaync # Notifications
 	qt5-wayland
 	qt6-wayland
 	noto-fonts
