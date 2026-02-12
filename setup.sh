@@ -91,7 +91,13 @@ PKGS=(
 	noto-fonts-emoji
 	wofi # App launcher
 	waybar
-	dolphin # File explorer
+	dolphin                  # File explorer
+	archlinux-xdg-menu       # For applications in 'open with' dialog
+	ark                      # archiving and compression support
+	ffmpegthumbs             # File previews for videos
+	icoutils                 # File previews for .ico and .exe
+	kdegraphics-thumbnailers # File previews for images, PDFs, and .blend files.
+	qt6-imageformats         # File previews for .webp and .tiff
 	otf-font-awesome
 	brightnessctl # Control screen brightness
 	kitty # Terminal Emulator
@@ -132,6 +138,10 @@ PKGS=(
 echo -e "${INDENT} Installing packages..."
 sudo pacman -S --noconfirm --needed "${PKGS[@]}"
 echo -e "${INDENT} Finished installing packages"
+
+# This is specifically for dolphin's 'open with' dialog.
+echo -e "${INDENT} Rebuilding system configuration cache..."
+kbuildsycoca6
 
 echo -e "${INDENT} Enabling services..."
 sudo timedatectl set-ntp true # Enable systemd-timesyncd for time syncronization.
