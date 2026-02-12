@@ -134,6 +134,7 @@ sudo pacman -S --noconfirm --needed "${PKGS[@]}"
 echo -e "${INDENT} Finished installing packages"
 
 echo -e "${INDENT} Enabling services..."
+sudo timedatectl set-ntp true # Enable systemd-timesyncd for time syncronization.
 sudo systemctl enable --now NetworkManager
 sudo systemctl enable --now bluetooth.service
 sudo systemctl enable --now nftables.service
