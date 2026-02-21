@@ -43,7 +43,6 @@ PKGS=(
 	# proton-vpn-gtk-app # Proton VPN. Refferal code: https://pr.tn/ref/VXSDWNRS
 	fastfetch # Alternative to neofetch.
 	feh # Image viewer
-	mdcat # cat but for reading markdown files.
 	mpv # Video player
 	obsidian # Note taking application
 	font-manager
