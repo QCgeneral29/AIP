@@ -45,6 +45,7 @@ PKGS=(
 	feh # Image viewer
 	mpv # Video player
 	obsidian # Note taking application
+	anki # Spaced repetition flash card software
 	font-manager
 	ttf-dejavu
 	discord
