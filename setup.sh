@@ -58,6 +58,7 @@ PKGS=(
 	ttf-liberation # Font for steam
 	### Bare essential packages
 	base-devel
+	bind # Includes dnsutils. E.g, dig for dns lookup
 	jre-openjdk
 	unzip
 	zip
