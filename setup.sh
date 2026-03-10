@@ -74,6 +74,7 @@ PKGS=(
 	nftables	
 	ffmpeg
 	imagemagick
+	yt-dlp
 	firefox
 	ttf-bigblueterminal-nerd # Used in kitty config
 	### Hyprland Desktop Environment and related packages
@@ -172,7 +173,6 @@ fi
 
 ### After yay is installed, I recommend installing the following:
 # - informant - Informs you of important news before a system upgrade
-# - yt-dlp-ejs - For downloading videos, you need deno and a solver script.
 # - iio-hyprland - If you need auto orientation e.g. 2-in-1 tablet.
 # 		See https://github.com/JeanSchoeller/iio-hyprland for more info.
 # 		It requires jq as a dependency. (iio-hyprland is on the AUR)
