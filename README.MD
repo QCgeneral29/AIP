@@ -84,8 +84,8 @@ Running the setup script does the following
 After running setup.sh, run the following command to symlink all configuration files (dotfiles)
 
 > [!WARNING]
-> As of writing, the default hyprland.conf rotates the monitor by 270 degrees because I am using a 2-1 tablet.
-> Remove the text 'transform, 3' in the 'monitors' section of .config/hypr/hyprland.conf to prevent this.
+> As of writing, the default hyprland.lua rotates the monitor by 270 degrees because I am using a 2-1 tablet.
+> Set  'transform = 3' to 'transform = auto' in the 'MONITORS' section of .config/hypr/hyprland.lua to prevent this.
 
 ```bash
 # THE AIP (or 'dotfiles') DIRECTORY MUST BE LOCATED IN YOUR HOME FOLDER!
