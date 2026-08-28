@@ -1,12 +1,12 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-family: FontAwesome, Iosevka Term, Helvetica, Arial, sans-serif;
+    font-size: 16px;
 }
 
 window#waybar {
-    background-color: rgba(255, 255, 255, 1.0);
-    color: #2a5c45;
+    background-color: #242730;
+    color: #DFDFDF;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -46,15 +46,16 @@ button:hover {
 #workspaces button {
     padding: 0 5px;
     background-color: transparent;
-    color: #000000;
+    color: #DFDFDF;
 }
 
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.2);
 }
 
-#workspaces button.focused {
-    background-color: #64727D;
+#workspaces button.active {
+    background-color: #DFDFDF;
+	color: #242730;
     box-shadow: inset 0 -3px #ffffff;
 }
 
@@ -63,7 +64,7 @@ button:hover {
 }
 
 #mode {
-    background-color: #64727D;
+    background-color: #DFDFDF;
     box-shadow: inset 0 -3px #ffffff;
 }
 
@@ -73,16 +74,16 @@ button:hover {
 #battery,
 #tray {
     padding: 0 10px;
-    color: #ffffff;
+    color: #242730;
 }
 
 #clock {
-    color: #2a5c45;
+    color: #DFDFDF;
 }
 
 #battery {
-    background-color: #ffffff;
-    color: #2a5c45;
+    background-color: #242730;
+    color: #DFDFDF;
 }
 
 #battery.charging, #battery.plugged {
@@ -113,8 +114,8 @@ label:focus {
 }
 
 #network {
-    background-color: #ffffff;
-    color: #2a5c45;
+    background-color: #242730;
+    color: #DFDFDF;
 }
 
 #network.disconnected {
@@ -122,18 +123,18 @@ label:focus {
 }
 
 #pulseaudio {
-    background-color: #f1c40f;
-    color: #000000;
+	background-color: #f1c40f;
+	color: #000000;
 }
 
 #pulseaudio.muted {
-    background-color: #ffffff;
-    color: #2a5c45;
+    background-color: #242730;
+    color: #DFDFDF;
 }
 
 #tray {
-    background-color: #ffffff;
-    color: #2a5c45;
+    background-color: #242730;
+    color: #DFDFDF;
 }
 
 #tray > .passive {

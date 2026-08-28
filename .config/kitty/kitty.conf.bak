@@ -6,7 +6,7 @@
 #: individual font faces and even specify special fonts for particular
 #: characters.
 
-font_family      BigBlueTerm437 Nerd Font Mono
+font_family     Iosevka Term
 # bold_font        auto
 # italic_font      auto
 # bold_italic_font auto
@@ -20,7 +20,7 @@ font_family      BigBlueTerm437 Nerd Font Mono
 #: <https://sw.kovidgoyal.net/kitty/kittens/choose-fonts/#font-spec-
 #: syntax>.
 
-font_size 13.0
+font_size 16.0
 
 #: Font size (in pts).
 
@@ -1320,7 +1320,7 @@ font_size 13.0
 
 #: The foreground and background colors.
 
-background_opacity 0.7
+# background_opacity 0.6
 
 #: The opacity of the background. A number between zero and one, where
 #: one is opaque and zero is fully transparent. This will only work if
@@ -2789,6 +2789,6 @@ background_opacity 0.7
 
 
 # BEGIN_KITTY_THEME
-# Aquarium Light
+# Gnome Light
 include current-theme.conf
 # END_KITTY_THEME

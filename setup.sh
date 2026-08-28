@@ -77,7 +77,7 @@ PKGS=(
 	imagemagick
 	yt-dlp
 	firefox
-	ttf-bigblueterminal-nerd # Used in kitty config
+	ttc-iosevka # Used in kitty config
 	### Hyprland Desktop Environment and related packages
 	hyprland
 	hyprlock
