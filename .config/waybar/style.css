@@ -19,6 +19,7 @@ window#waybar.chromium {
     background-color: #000000;
     border: none;
 }
+
 window#waybar.firefox {
     background-color: #000000;
     border: none;
@@ -35,12 +36,12 @@ button {
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
     background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
+    box-shadow: inset 0 -3px #FFFFFF;
 }
 
 /* you can set a style on hover for any module like this */
 #pulseaudio:hover {
-    background-color: #a37800;
+    background-color: #A37800;
 }
 
 #workspaces button {
@@ -56,16 +57,16 @@ button:hover {
 #workspaces button.active {
     background-color: #DFDFDF;
 	color: #242730;
-    box-shadow: inset 0 -3px #ffffff;
+    box-shadow: inset 0 -3px #FFFFFF;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    background-color: #EB4D4B;
 }
 
 #mode {
     background-color: #DFDFDF;
-    box-shadow: inset 0 -3px #ffffff;
+    box-shadow: inset 0 -3px #FFFFFF;
 }
 
 #clock,
@@ -74,7 +75,6 @@ button:hover {
 #battery,
 #tray {
     padding: 0 10px;
-    color: #242730;
 }
 
 #clock {
@@ -86,22 +86,23 @@ button:hover {
     color: #DFDFDF;
 }
 
-#battery.charging, #battery.plugged {
-    color: #ffffff;
+#battery.charging,
+#battery.plugged {
+    color: #FFFFFF;
     background-color: #26A65B;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
+        background-color: #FFFFFF;
         color: #000000;
     }
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
+    background-color: #EB4D4B;
+    color: #FFFFFF;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
@@ -119,11 +120,11 @@ label:focus {
 }
 
 #network.disconnected {
-    background-color: #f53c3c;
+    background-color: #EB4D4B;
 }
 
 #pulseaudio {
-	background-color: #f1c40f;
+	background-color: #F1C40F;
 	color: #000000;
 }
 
@@ -143,6 +144,5 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+    background-color: #EB4D4B;
 }
-
