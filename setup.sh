@@ -214,7 +214,7 @@ echo "Right click the keyboard icon in the tray -> configure -> enable mozc"
 echo -e "${INDENT} ${RED}Configure printers at${NC} ${BLUE}http://localhost:631/admin${NC}"
 echo "Login to the admin page using your root username and password. (Bookmark recommended)"
 
-echo -e "${INDENT} ${RED}The default hyprland configuration is located in .config/hypr/hyprland.conf${NC}"
+echo -e "${INDENT} ${RED}The default hyprland configuration is located in .config/hypr/hyprland.lua${NC}"
 echo "The default configuration rotates the screen by 180 degrees. Remove 'transform, 3' to disable this."
 
 ### Calculate script runtime and finish.
