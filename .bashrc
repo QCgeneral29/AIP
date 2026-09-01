@@ -55,7 +55,7 @@ convertWebpToJpg() {
     echo "Created: $output"
 }
 
-convertJpgForWebp() {
+convertJpgToWebp() {
     if [ -z "$1" ]; then
         echo "Usage: convertJpgForWebp <input.jpg>"
         echo "Converts a JPG to a web-optimized WEBP image (quality 85, efficient compression)."

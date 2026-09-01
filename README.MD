@@ -113,3 +113,30 @@ start-hyprland
 お疲れ様でした！
 
 You now have a working Arch Linux desktop environment. Please enjoy!
+
+## Bonus: Commands included in .bashrc
+
+The .bashrc file provided with AIP includes the following aliases and functions:
+
+```bash
+### Aliases
+wifion
+# Turn on wifi via an rfkill command.
+wifioff
+# Turn off wifi.
+getsong (url)
+# Download the audio from the provided URL as an MP3 file using yt-dlp.
+```
+```bash
+### Functions
+convertJpgForWeb (file)
+# Convert a given file to a web-optimized JPG.
+convertWebpToJpg (file)
+# Convert a given Webp file to a JPG file without loss.
+convertJpgToWebp (file)
+# Convert a given JPG file to a web-optimized Webp file.
+convertVideo (file) (crf value [Optional])
+# Compress a video with an optional crf value.
+convertVideo20MB (file)
+# Convert a given video file to a 20MB MP4. Useful for sending videos on Discord.
+```
