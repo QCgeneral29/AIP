@@ -94,11 +94,11 @@ convertVideo() {
         "$output"
 }
     
-### Compress a video to 10mb and convert to mp4
+### Compress a video to 20mb and convert to mp4
 # Note: Made with AI and is probably bad. Seems to work well-enough
-convertVideo10MB() {
+convertVideo20MB() {
     if [ $# -eq 0 ]; then
-        echo "Usage: compressVideo10MB <input_file>"
+        echo "Usage: compressVideo20MB <input_file>"
         return 1
     fi
 
@@ -108,14 +108,14 @@ convertVideo10MB() {
 	input="$1"
     filename="${input%.*}"
     extension="${input##*.}"
-    output="${filename}-10mb.mp4"
+    output="${filename}-20mb.mp4"
     
     # Get video duration and fps
     duration=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$input")
     fps=$(ffprobe -v error -select_streams v:0 -show_entries stream=r_frame_rate -of default=noprint_wrappers=1:nokey=1 "$input" | awk -F'/' '{if ($2) print $1/$2; else print $1}')
     
     # Calculate target bitrate for 9.5MB to account for overhead
-    target_bitrate=$(awk "BEGIN {printf \"%.0f\", (9.5 * 8 * 1024) / $duration - 128}")
+    target_bitrate=$(awk "BEGIN {printf \"%.0f\", (19.5 * 8 * 1024) / $duration - 128}")
     
     # Determine if we need to scale down to 480 based on bitrate
     if [ "$target_bitrate" -lt 500 ]; then
