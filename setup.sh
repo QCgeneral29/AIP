@@ -53,7 +53,8 @@ PKGS=(
 	7zip
 	obs-studio
 	spotify-launcher
-	libreoffice-still # Free and open source productivity suite. E.g. Microsoft Word, Excel, etc.
+	# I recommend freeoffice over libre office. It must be downloaded via the AUR. E.g., using yay.
+	# libreoffice-still # Free and open source productivity suite. E.g. Microsoft Word, Excel, etc.
 	steam
 	ttf-liberation # Font for steam
 	### Bare essential packages
@@ -174,6 +175,7 @@ fi
 
 ### After yay is installed, I recommend installing the following:
 # - informant - Informs you of important news before a system upgrade
+# - freeofice - Like Microsoft Office, but free and actually works.
 # - iio-hyprland - If you need auto orientation e.g. 2-in-1 tablet.
 # 		See https://github.com/JeanSchoeller/iio-hyprland for more info.
 # 		It requires jq as a dependency. (iio-hyprland is on the AUR)
@@ -216,6 +218,9 @@ echo "Login to the admin page using your root username and password. (Bookmark r
 
 echo -e "${INDENT} ${RED}The default hyprland configuration is located in .config/hypr/hyprland.lua${NC}"
 echo "The default configuration rotates the screen by 180 degrees. Remove 'transform, 3' to disable this."
+
+echo -e "${INDENT} ${RED}The Escape key and Caps Lock keys are swapped.${NC}"
+echo "This is helpful for VIM users. To disable this, remove the kb_option 'caps:swapescape' in hyprland.lua."
 
 ### Calculate script runtime and finish.
 end=$(date +%s)
