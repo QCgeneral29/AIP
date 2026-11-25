@@ -114,7 +114,7 @@ convertVideo20MB() {
     duration=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$input")
     fps=$(ffprobe -v error -select_streams v:0 -show_entries stream=r_frame_rate -of default=noprint_wrappers=1:nokey=1 "$input" | awk -F'/' '{if ($2) print $1/$2; else print $1}')
     
-    # Calculate target bitrate for 9.5MB to account for overhead
+    # Calculate target bitrate for 19.5MB to account for overhead
     target_bitrate=$(awk "BEGIN {printf \"%.0f\", (19.5 * 8 * 1024) / $duration - 128}")
     
     # Determine if we need to scale down to 480 based on bitrate
